@@ -120,7 +120,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hoverColor: {r: 0.3490566, g: 0.3490566, b: 0.3490566, a: 0}
+  notEnoughMoneyColor: {r: 0.9716981, g: 0.2520915, b: 0.2520915, a: 0}
   positionOffset: {x: 0, y: 0.5, z: 0}
+  turret: {fileID: 0}
 --- !u!114 &2804420288315062570
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -134,3 +136,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   standardTurretPrefab: {fileID: 4263285373442034429, guid: 9a27cd4b17340a34d8014132f3568b80, type: 3}
+  missileTurretPrefab: {fileID: 6170536271704609667, guid: 9a28c3e4b4a02e34cbb80392e0778794, type: 3}
