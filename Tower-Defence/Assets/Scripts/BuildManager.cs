@@ -6,6 +6,7 @@ using UnityEngine;
 public class BuildManager : MonoBehaviour
 {
     public static BuildManager instance;
+    public GameObject buildEffect;
 
     private void Awake()
     {
@@ -16,16 +17,44 @@ public class BuildManager : MonoBehaviour
         instance = this;
     }
 
-    public GameObject standardTurretPrefab;
+    private TurretBlueprint turretToBuild;
+    private Node selectedNode;
 
-    private void Start()
+    public NodeUI nodeUI;
+
+    public bool CanBuild { get { return turretToBuild != null; } }
+    public bool HasMoney { get { return PlayerStats.Money >= turretToBuild.cost; } }
+    
+
+
+    public void SelectNode(Node node)
     {
-        turretToBuild = standardTurretPrefab;
+        if (selectedNode == node)
+        {
+            selectedNode = null;
+            nodeUI.Hide();
+            return;
+        }
+        
+        selectedNode = node;
+        turretToBuild = null;
+
+        nodeUI.SetTarget(node);
     }
 
-    private GameObject turretToBuild;
+    public void DeselectNode()
+    {
+        selectedNode = null;
+        nodeUI.Hide();
+    }
+    public void SelectTurretToBuild(TurretBlueprint turret)
+    {
+        turretToBuild = turret;
+        
+        DeselectNode();
+    }
 
-    public GameObject GetTurretToBuild()
+    public TurretBlueprint GetTurretTobuild()
     {
         return turretToBuild;
     }
