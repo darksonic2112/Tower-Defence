@@ -9990,9 +9990,9 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -8418019662413110148, guid: e4f126a3d311b794097ee442bf408e87, type: 3}
+  - {fileID: 2100000, guid: 6bbc1e6299fd06e4295cd829b7e54ed4, type: 2}
   - {fileID: 7347949212528627919, guid: e4f126a3d311b794097ee442bf408e87, type: 3}
-  - {fileID: 4387638107276554849, guid: e4f126a3d311b794097ee442bf408e87, type: 3}
+  - {fileID: 2100000, guid: 6bbc1e6299fd06e4295cd829b7e54ed4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -10102,6 +10102,8 @@ MonoBehaviour:
   lineRenderer: {fileID: 7867667558166497888}
   impactEffect: {fileID: 5990477489677830562}
   impactLight: {fileID: 119925135809734577}
+  damageOverTime: 60
+  slowPercentage: 0.5
   enemyTag: Enemy
   partToRotate: {fileID: 4378159594133134384}
   turnSpeed: 10
