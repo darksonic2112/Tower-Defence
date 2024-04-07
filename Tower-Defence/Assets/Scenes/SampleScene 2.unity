@@ -21719,6 +21719,7 @@ MonoBehaviour:
   enemyPrefab: {fileID: 954750704430197866, guid: 843107917971cdf469a0c6e97aaac1cb, type: 3}
   spawnPoint: {fileID: 420129781}
   waveCountdownText: {fileID: 108236600}
+  gameManager: {fileID: 2051183323}
   timeBetweenWaves: 2
 --- !u!4 &2051183320
 Transform:
@@ -21763,7 +21764,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startMoney: 400
-  startLives: 1
+  startLives: 10
 --- !u!114 &2051183323
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21777,6 +21778,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameOverUI: {fileID: 557437593}
+  nextLevel: SampleScene 2
+  levelToUnlock: 2
 --- !u!114 &2051183324
 MonoBehaviour:
   m_ObjectHideFlags: 0
