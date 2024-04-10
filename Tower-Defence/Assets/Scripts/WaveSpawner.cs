@@ -4,20 +4,34 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.AI;
 
 public class WaveSpawner : MonoBehaviour
 {
+    public Wave[] waves;
+    public static int EnemiesAlive = 0;
     public Transform enemyPrefab;
     public Transform spawnPoint;
+    public Transform destinationPoint;
     public TextMeshProUGUI waveCountdownText;
-    
+    public GameManager gameManager;
     public float timeBetweenWaves = 20f;
-    private float countdown = 2f;
+    private float countdown = 5f;
     private int waveIndex = 0;
-    
-    
+
     void Update()
     {
+        if (EnemiesAlive > 0)
+        {
+            return;
+        }
+
+        if (waveIndex == waves.Length)
+        {
+            gameManager.WinLevel();
+            this.enabled = false;
+        }
+
         if (countdown <= 0f)
         {
             StartCoroutine(SpawnWave());
@@ -25,26 +39,32 @@ public class WaveSpawner : MonoBehaviour
         }
 
         countdown -= Time.deltaTime;
-
-        countdown = Math.Clamp(countdown, 0f, Mathf.Infinity);
-
+        countdown = Mathf.Clamp(countdown, 0f, Mathf.Infinity);
         waveCountdownText.text = string.Format("{0:00.00}", countdown);
     }
 
     IEnumerator SpawnWave()
     {
-        waveIndex++;
         PlayerStats.Rounds++;
-        
-        for (int i = 0; i < waveIndex; i++)
+        Wave wave = waves[waveIndex];
+        EnemiesAlive = wave.count;
+
+        for (int i = 0; i < wave.count; i++)
         {
-            SpawnEnemy();
-            yield return new WaitForSeconds(0.5f);
+            SpawnEnemy(wave.enemy);
+            yield return new WaitForSeconds(1f / wave.rate);
         }
+        waveIndex++;
     }
 
-    void SpawnEnemy()
+    void SpawnEnemy(GameObject enemy)
     {
-        Instantiate(enemyPrefab, spawnPoint.position, spawnPoint.rotation);
+        Transform enemyTransform = Instantiate(enemy, spawnPoint.position, spawnPoint.rotation).transform;
+        
+        NavMeshAgent agent = enemyTransform.GetComponent<NavMeshAgent>();
+        if (agent != null)
+        {
+            agent.SetDestination(destinationPoint.position);
+        }
     }
 }
