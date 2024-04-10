@@ -32,11 +32,22 @@ public class Turret : MonoBehaviour
 
 
     public Transform firePoint;
+    private Cinemachine.CinemachineVirtualCamera virtualCamera;
     
     
     void Start()
     {
+        Invoke("DisableVirtualCamera", 3f);
         InvokeRepeating("UpdateTarget", 0f, 0.5f);
+    }
+    
+    void DisableVirtualCamera()
+    {
+        virtualCamera = GetComponentInChildren<Cinemachine.CinemachineVirtualCamera>();
+        if (virtualCamera != null)
+        {
+            virtualCamera.gameObject.SetActive(false);
+        }
     }
 
     void UpdateTarget()

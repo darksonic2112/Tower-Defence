@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
@@ -23,11 +24,16 @@ public class Enemy : MonoBehaviour
     public Image healthBar;
 
     private bool isDead = false;
-
+    private NavMeshAgent navMeshAgent;
+    
     private void Start()
     {
         speed = startSpeed;
         health = startHealth;
+        navMeshAgent = gameObject.AddComponent<NavMeshAgent>();
+        navMeshAgent.speed = startSpeed;
+        navMeshAgent.updateRotation = false;
+        navMeshAgent.updateUpAxis = false;
     }
     public void TakeDamage(float amount)
     {
@@ -44,6 +50,7 @@ public class Enemy : MonoBehaviour
     public void Slow(float amount)
     {
         speed = startSpeed * (1f - amount);
+        navMeshAgent.speed = speed;
     }
 
 

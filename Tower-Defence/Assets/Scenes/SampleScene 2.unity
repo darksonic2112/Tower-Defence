@@ -6480,7 +6480,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameOverAnimator: {fileID: 557437596}
-  roundsText: {fileID: 81622848}
 --- !u!95 &557437596
 Animator:
   serializedVersion: 5
@@ -9375,7 +9374,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameOverAnimator: {fileID: 863155920}
-  roundsText: {fileID: 862554880}
 --- !u!95 &863155920
 Animator:
   serializedVersion: 5
@@ -21718,6 +21716,7 @@ MonoBehaviour:
     rate: 2
   enemyPrefab: {fileID: 954750704430197866, guid: 843107917971cdf469a0c6e97aaac1cb, type: 3}
   spawnPoint: {fileID: 420129781}
+  destinationPoint: {fileID: 0}
   waveCountdownText: {fileID: 108236600}
   gameManager: {fileID: 2051183323}
   timeBetweenWaves: 2
@@ -21750,6 +21749,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildEffect: {fileID: 8943390615261531771, guid: 25aed64723221104b88fabe054a77623, type: 3}
   sellEffect: {fileID: 8943390615261531771, guid: ffc45b208a7f8f747aaf1d867ce5531f, type: 3}
+  turretPrefab: {fileID: 4263285373442034429, guid: 9a27cd4b17340a34d8014132f3568b80, type: 3}
+  virtualCameraPrefab: {fileID: 0}
   nodeUI: {fileID: 1942973904}
 --- !u!114 &2051183322
 MonoBehaviour:
@@ -21777,9 +21778,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5e0be758a9996d46a5a45704206c487, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  completeLevelUI: {fileID: 0}
   gameOverUI: {fileID: 557437593}
-  nextLevel: SampleScene 2
-  levelToUnlock: 2
 --- !u!114 &2051183324
 MonoBehaviour:
   m_ObjectHideFlags: 0
